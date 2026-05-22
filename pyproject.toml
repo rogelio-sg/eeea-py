@@ -2,7 +2,7 @@
 name = "EEEA-PY"
 version = "0.0.1"
 authors = [
-  { name="Rogelio Salinas", email="" },
+  { name="Rogelio Salinas"},
   { name="Enrique Gomez", email="ing.enrique_gomez@outlook.com" },
 ]
 description = ""
@@ -12,9 +12,21 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
 ]
-license = ""
-license-files = ["LICEN[CS]E*"]
 
 [project.urls]
 Homepage = "https://github.com/rogelio-sg/Paquete-Python"
-Issues = ""
+
+[tool.setuptools.packages.find]
+# Designates the 'src' directory as the primary location for package source discovery.
+where = ["src"]
+
+[tool.pytest.ini_options]
+# Extends the Python search path to include the 'src' directory, enabling cleaner
+# absolute imports and facilitating proper module resolution during testing.
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.setuptools]
+# Enables automatic discovery and inclusion of non-Python resource files 
+# located within the package subdirectories.
+include-package-data = true
