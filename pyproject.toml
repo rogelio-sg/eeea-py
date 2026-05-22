@@ -2,8 +2,11 @@
 name = "EEEA-PY"
 version = "0.0.1"
 authors = [
-  { name="Rogelio Salinas"},
+  { name="Rogelio Salinas", email="rogelio.salinas.gutierrez@gmail.com" },
   { name="Enrique Gomez", email="ing.enrique_gomez@outlook.com" },
+  { name="Victoria Galvan", email="galvand.victoria@gmail.com" },
+  { name="Juan De Dios", email="halowolf213@gmail.com" },
+  { name="Jessica Medina", email="jessvimm@gmail.com" },
 ]
 description = ""
 readme = "README.md"
