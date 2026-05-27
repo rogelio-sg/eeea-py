@@ -1,6 +1,5 @@
 import numpy as np
-import ee
-import tests
+from . import ee
 
 def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
     """Returns the best solution using EMNA with explicit exploration.
@@ -16,7 +15,6 @@ def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
     g       -- maximum number of generations
     maxiter -- maximum number of iterations for explicit exploration
     """
-    # Initialize population with explicit exploration
     P0 = ee.explicit_exploration(fitness_fun=obj_fun, dim=dim, lb=lb, ub=ub,
                                  n=n, tol=tol, K=k, maxiter=maxiter)
 

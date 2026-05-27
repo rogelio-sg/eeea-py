@@ -1,5 +1,4 @@
 import numpy as np
-import tests
 
 def explicit_exploration(fitness_fun, dim, lb, ub, n, tol, K, maxiter):
     """Returns a population of n individuals using explicit exploration.
