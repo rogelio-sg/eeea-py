@@ -66,9 +66,9 @@ def explicit_exploration(fitness_fun, dim, lb, ub, n, tol, K, maxiter):
 
     return S
 
-#lb = np.full(2, -5.12)
-#ub = np.full(2, 5.12)
+lb = np.full(2, -5.12)
+ub = np.full(2, 5.12)
 
-#S = explicit_exploration(fitness_fun=tests.sphere, dim=2, lb=lb, ub=ub, n=50, tol=0.01, K=30, maxiter=300)
+S = explicit_exploration(fitness_fun=tests.sphere, dim=2, lb=lb, ub=ub, n=50, tol=0.01, K=30, maxiter=300)
 
-#print("Population:", S)
+print("Population:", S)
