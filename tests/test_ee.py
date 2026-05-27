@@ -12,10 +12,10 @@ from evobench.benchmarks.unimodal import (
 )
 # --- INTEGRATION TEST WITH BENCHMARKS AND BOUNDARIES ---
 @pytest.mark.parametrize("benchmark_function, lower_bound, upper_bound", [
-    (sphere_function, -600.0, 600.0),
-    (rosenbrock_function, -10.0, 10.0),
-    (schwefel_1_2_function, -40.0, 60.0),
-    (trid_function, -100.0, 100.0)  # Generic boundaries for testing purposes
+    (sphere_function, [-600.0,-600.0,-600.0], [600.0,-600.0,-600.0]),
+    (rosenbrock_function, [-10.0,-10.0,-10.0], [10.0,10.0,10.0]),
+    (schwefel_1_2_function,[-40.0,-40.0,-40.0], [60.0,60.0,60.0]),
+    (trid_function,[-100.0,-100.0,-100.0], [100.0,100.0,100.0])  # Generic boundaries for testing purposes
 ])
 def test_explicit_exploration_shapes_and_bounds(benchmark_function, lower_bound, upper_bound):
     """
@@ -26,17 +26,21 @@ def test_explicit_exploration_shapes_and_bounds(benchmark_function, lower_bound,
     dimensions = 3
     tolerance = 0.1
     max_stable_generations = 2
-    
+    max_iter = 300
+
+    assert len(lower_bound) == dimensions, f"Size dimension is {dimensions}, but lower limit is {len(lower_bound)}"
+    assert len(upper_bound) == dimensions, f"Size dimension is {dimensions}, but upper limit is {len(upper_bound)}"
+
     # Execute the exploration function
     selected_population = explicit_exploration(
         n=population_size, 
-        mode="min", 
         fitness_fun=benchmark_function, 
         dim=dimensions, 
         lb=lower_bound, 
         ub=upper_bound, 
         tol=tolerance, 
-        K=max_stable_generations
+        K=max_stable_generations,
+        maxiter=max_iter
     )
     
     # Validate that the resulting matrix shape matches (population_size, dimensions)
@@ -55,17 +59,18 @@ def test_explicit_exploration_mode_min():
     """
     population_size = 5
     dimensions = 2
+    max_iter = 300
     
     # Using the Sphere function as it is fast and strictly convex
     selected_population = explicit_exploration(
         n=population_size, 
-        mode="min", 
         fitness_fun=sphere_function, 
         dim=dimensions, 
-        lb=-10.0, 
-        ub=10.0, 
+        lb=[-10.0,-10.0], 
+        ub=[10.0, 10.0], 
         tol=0.2, 
-        K=1
+        K=1,
+        maxiter=max_iter
     )
     
     # Evaluate the returned individuals
