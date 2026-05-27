@@ -1,5 +1,5 @@
 import numpy as np
-import ee
+import EES
 import tests
 
 def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
@@ -17,7 +17,7 @@ def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
     maxiter -- maximum number of iterations for explicit exploration
     """
     # Initialize population with explicit exploration
-    P0 = ee.explicit_exploration(fitness_fun=obj_fun, dim=dim, lb=lb, ub=ub,
+    P0 = EES.explicit_exploration(fitness_fun=obj_fun, dim=dim, lb=lb, ub=ub,
                                  n=n, tol=tol, K=k, maxiter=maxiter)
 
     best_individual = None
@@ -51,12 +51,15 @@ def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
     }
 
 # Variables
-#dim = 2                  # dimensions
-#lb = np.full(dim, -5.12) # lower bound
-#ub = np.full(dim, 5.12)  # upper bound
-#n = 100                  # individuals
-#g = 100                  # generations
+dim = 2                  # dimensions
+lb = np.full(dim, -(dim)**2) # lower bound
+ub = np.full(dim, dim**2)  # upper bound
+n = 100                  # individuals
+g = 100                  # generations
 
-#result = emna(tests.sphere, dim, lb, ub, n, tol=0.01, k=10, g=g, maxiter=300)
-#print("Best individual:", result["best_individual"])
-#print("Best fitness:   ", result["best_fitness"])
+result = emna(tests.trid, dim, lb, ub, n, tol=0.01, k=10, g=g, maxiter=300)
+print("Best individual:", result["best_individual"])
+print("Best fitness:   ", result["best_fitness"])
+print("Last population:   ", result["last_population"])
+
+print(2^2)
