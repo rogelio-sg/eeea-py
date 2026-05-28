@@ -1,5 +1,5 @@
 [project]
-name = "EEEA-PY"
+name = "eeea-py"
 version = "0.0.1"
 authors = [
   { name="Rogelio Salinas", email="rogelio.salinas.gutierrez@gmail.com" },
@@ -17,7 +17,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/rogelio-sg/Paquete-Python"
+Homepage = "https://github.com/rogelio-sg/eeea-py"
+
 
 [tool.setuptools.packages.find]
 # Designates the 'src' directory as the primary location for package source discovery.

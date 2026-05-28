@@ -48,13 +48,23 @@ def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
         "last_fitness": apt0
     }
 
-# Variables
-#dim = 2                  # dimensions
-#lb = np.full(dim, -5.12) # lower bound
-#ub = np.full(dim, 5.12)  # upper bound
-#n = 100                  # individuals
-#g = 100                  # generations
+if __name__ == "__main__":
+    def trid(x):
+        sum1 = np.sum((x - 1)**2)
+        sum2 = np.sum(x[1:] * x[:-1])
+        value = sum1 - sum2
+        return value
 
-#result = emna(tests.sphere, dim, lb, ub, n, tol=0.01, k=10, g=g, maxiter=300)
-#print("Best individual:", result["best_individual"])
-#print("Best fitness:   ", result["best_fitness"])
+    # Variables
+    dim = 2                  # dimensions
+    lb = np.full(dim, -(dim)**2) # lower bound
+    ub = np.full(dim, dim**2)  # upper bound
+    n = 100                  # individuals
+    g = 100                  # generations
+
+    result = emna(trid, dim, lb, ub, n, tol=0.01, k=10, g=g, maxiter=300)
+    print("Best individual:", result["best_individual"])
+    print("Best fitness:   ", result["best_fitness"])
+    print("Last population:   ", result["last_population"])
+
+    print(2^2)
