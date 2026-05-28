@@ -50,16 +50,17 @@ def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
         "last_fitness": apt0
     }
 
-# Variables
-dim = 2                  # dimensions
-lb = np.full(dim, -(dim)**2) # lower bound
-ub = np.full(dim, dim**2)  # upper bound
-n = 100                  # individuals
-g = 100                  # generations
+if __name__ == "__main__":
+    # Variables
+    dim = 2                  # dimensions
+    lb = np.full(dim, -(dim)**2) # lower bound
+    ub = np.full(dim, dim**2)  # upper bound
+    n = 100                  # individuals
+    g = 100                  # generations
 
-result = emna(tests.trid, dim, lb, ub, n, tol=0.01, k=10, g=g, maxiter=300)
-print("Best individual:", result["best_individual"])
-print("Best fitness:   ", result["best_fitness"])
-print("Last population:   ", result["last_population"])
+    result = emna(tests.trid, dim, lb, ub, n, tol=0.01, k=10, g=g, maxiter=300)
+    print("Best individual:", result["best_individual"])
+    print("Best fitness:   ", result["best_fitness"])
+    print("Last population:   ", result["last_population"])
 
-print(2^2)
+    print(2^2)

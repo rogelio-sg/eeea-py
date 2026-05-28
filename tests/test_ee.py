@@ -1,7 +1,6 @@
 import numpy as np
 import pytest
-from time import time
-from eeea_py.algorithms.ee import explicit_exploration
+from eeea_py.algorithms.EES import explicit_exploration
 
 # Importing the benchmark test functions from evobench
 from evobench.benchmarks.unimodal import (
