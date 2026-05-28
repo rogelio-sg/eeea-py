@@ -1,5 +1,4 @@
 import numpy as np
-import tests
 
 def explicit_exploration(fitness_fun, dim, lb, ub, n, tol, K, maxiter):
     """Returns a population of n individuals using explicit exploration.
@@ -65,10 +64,11 @@ def explicit_exploration(fitness_fun, dim, lb, ub, n, tol, K, maxiter):
     S = P0[ind[:n]]
 
     return S
+if __name__ == "__main__":
+    import tests
+    lb = np.full(2, -5.12)
+    ub = np.full(2, 5.12)
 
-lb = np.full(2, -5.12)
-ub = np.full(2, 5.12)
+    S = explicit_exploration(fitness_fun=tests.sphere, dim=2, lb=lb, ub=ub, n=50, tol=0.01, K=30, maxiter=300)
 
-S = explicit_exploration(fitness_fun=tests.sphere, dim=2, lb=lb, ub=ub, n=50, tol=0.01, K=30, maxiter=300)
-
-print("Population:", S)
+    print("Population:", S)
