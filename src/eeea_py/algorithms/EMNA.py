@@ -1,6 +1,5 @@
 import numpy as np
-import EES
-import tests
+from . import ee
 
 def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
     """Returns the best solution using EMNA with explicit exploration.
@@ -16,8 +15,7 @@ def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
     g       -- maximum number of generations
     maxiter -- maximum number of iterations for explicit exploration
     """
-    # Initialize population with explicit exploration
-    P0 = EES.explicit_exploration(fitness_fun=obj_fun, dim=dim, lb=lb, ub=ub,
+    P0 = ee.explicit_exploration(fitness_fun=obj_fun, dim=dim, lb=lb, ub=ub,
                                  n=n, tol=tol, K=k, maxiter=maxiter)
 
     best_individual = None
@@ -51,6 +49,12 @@ def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
     }
 
 if __name__ == "__main__":
+    def trid(x):
+        sum1 = np.sum((x - 1)**2)
+        sum2 = np.sum(x[1:] * x[:-1])
+        value = sum1 - sum2
+        return value
+
     # Variables
     dim = 2                  # dimensions
     lb = np.full(dim, -(dim)**2) # lower bound
@@ -58,7 +62,7 @@ if __name__ == "__main__":
     n = 100                  # individuals
     g = 100                  # generations
 
-    result = emna(tests.trid, dim, lb, ub, n, tol=0.01, k=10, g=g, maxiter=300)
+    result = emna(trid, dim, lb, ub, n, tol=0.01, k=10, g=g, maxiter=300)
     print("Best individual:", result["best_individual"])
     print("Best fitness:   ", result["best_fitness"])
     print("Last population:   ", result["last_population"])
