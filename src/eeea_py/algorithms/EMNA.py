@@ -1,5 +1,5 @@
 import numpy as np
-from . import EES
+from eeea_py.algorithms import EES
 
 def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
     """Returns the best solution using EMNA with explicit exploration.

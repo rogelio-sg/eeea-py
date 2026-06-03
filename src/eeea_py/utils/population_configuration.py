@@ -1,5 +1,5 @@
 import numpy as np
-import algorithms.EES as ee
+import eeea_py.algorithms.EES as ee
 
 def init_pop(method, obj_fun, dim, lb, ub, n, tol=None, k=None, maxiter=None, seed=None):
     """
