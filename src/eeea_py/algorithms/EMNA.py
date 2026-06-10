@@ -1,70 +1,119 @@
 import numpy as np
-from eeea_py.algorithms import EES
 
-def emna(obj_fun, dim, lb, ub, n, tol, k, g, maxiter):
-    """Returns the best solution using EMNA with explicit exploration.
+from ..utils.ranges_verification import validate_bounds
+from ..utils.population_configuration import (init_pop, eval_pop)
+from ..utils.results_management import make_result
 
-    Keyword arguments:
-    obj_fun -- objective function to minimize
-    dim     -- dimension of the objective function
-    lb      -- lower bound of the search space
-    ub      -- upper bound of the search space
-    n       -- population size
-    tol     -- error tolerance for explicit exploration
-    k       -- consecutive generations for explicit exploration convergence
-    g       -- maximum number of generations
-    maxiter -- maximum number of iterations for explicit exploration
+def emna(obj_fun, dim, lb, ub, n, g, method='random',
+         tol=None, k=None, maxiter=None, seed=None):
     """
-    P0 = EES.explicit_exploration(fitness_fun=obj_fun, dim=dim, lb=lb, ub=ub,
-                                 n=n, tol=tol, K=k, maxiter=maxiter)
-
+    Estimation of Multivariate Normal Algorithm with configurable initialization.
+    
+    This algorithm uses either random initialization or explicit exploration
+    strategy (EES) to generate the initial population, then iteratively models
+    the selected individuals using a multivariate normal distribution.
+    
+    Parameters
+    ----------
+    obj_fun : callable
+        Objective function to minimize.
+    dim : int
+        Dimensionality of the search space.
+    lb : array_like
+        Lower bounds of the search space.
+    ub : array_like
+        Upper bounds of the search space.
+    n : int
+        Population size.
+    g : int
+        Maximum number of generations for EMNA.
+    method : str, optional
+        Initialization method: 'random' or 'ees'. Default is 'random'.
+    tol : float, optional (required if method='ees')
+        Error tolerance for explicit exploration.
+    k : int, optional (required if method='ees')
+        Number of consecutive generations below tolerance for EES.
+    maxiter : int, optional (required if method='ees')
+        Maximum iterations for explicit exploration.
+    seed : int, optional
+        Random seed for reproducibility.
+    
+    Returns
+    -------
+    dict
+        Dictionary with 'best_individual', 'best_fitness', 'last_population',
+        'last_fitness', and 'history'.
+    
+    Examples
+    --------
+    >>> # Using random initialization (baseline)
+    >>> result = emna(sphere, 2, [-5, -5], [5, 5], 100, 100, method='random')
+    
+    >>> # Using explicit exploration
+    >>> result = emna(sphere, 2, [-5, -5], [5, 5], 100, 100, method='ees',
+    ...               tol=0.01, k=10, maxiter=300)
+    """
+    # Validate method-specific parameters
+    if method == 'ees':
+        if tol is None or k is None or maxiter is None:
+            raise ValueError("For method='ees', tol, k, and maxiter must be provided")
+    elif method != 'random':
+        raise ValueError(f"Unknown method: {method}. Use 'random' or 'ees'")
+    
+    if seed is not None:
+        np.random.seed(seed)
+    
+    # Validate bounds
+    lb, ub, _ = validate_bounds(lb, ub)
+    
+    # Initialize population using specified method
+    population = init_pop(
+        method=method, obj_fun=obj_fun, dim=dim, lb=lb, ub=ub, n=n,
+        tol=tol, k=k, maxiter=maxiter, seed=seed
+    )
+    
     best_individual = None
     best_fitness = None
-
-    # Generations
-    for j in range(g):
-        # Evaluate fitness of the population
-        apt0 = np.apply_along_axis(obj_fun, 1, P0)
-
-        position = np.argmin(apt0)
-        best_individual = P0[position, :]
-        best_fitness = apt0[position]
-
-        # Select the best half of individuals
-        S0 = P0[np.argsort(apt0)[:n//2], :]
-
-        # Estimate probability model
-        # using multivariate normal distribution
-        mean_vector = np.mean(S0, axis=0)
-        cov_matrix = np.cov(S0, rowvar=False)
-
-        # Generate new population
-        P0 = np.random.multivariate_normal(mean=mean_vector, cov=cov_matrix, size=n)
-
-    return {
-        "best_individual": best_individual,
-        "best_fitness": best_fitness,
-        "last_population": P0,
-        "last_fitness": apt0
-    }
-
-if __name__ == "__main__":
-    def trid(x):
-        sum1 = np.sum((x - 1)**2)
-        sum2 = np.sum(x[1:] * x[:-1])
-        value = sum1 - sum2
-        return value
-
-    # Variables
-    dim = 2                  # dimensions
-    lb = np.full(dim, -(dim)**2) # lower bound
-    ub = np.full(dim, dim**2)  # upper bound
-    n = 100                  # individuals
-    g = 100                  # generations
-
-    result = emna(trid, dim, lb, ub, n, tol=0.01, k=10, g=g, maxiter=300)
-    print("Best individual:", result["best_individual"])
-    print("Best fitness:   ", result["best_fitness"])
-    print("Last population:   ", result["last_population"])
-
-    print(2^2)
+    history = []
+    
+    # Main EMNA loop
+    for generation in range(g):
+        # Evaluate fitness of the entire population (vectorized)
+        fitness = eval_pop(population, obj_fun)
+        
+        # Track best solution
+        best_idx = np.argmin(fitness)
+        best_individual = population[best_idx].copy()
+        best_fitness = fitness[best_idx]
+        history.append(best_fitness)
+        
+        # Select the best half of individuals (truncation selection)
+        n_selected = n // 2
+        sorted_idx = np.argsort(fitness)
+        selected = population[sorted_idx[:n_selected]]
+        
+        # Estimate probability model using multivariate normal distribution
+        mean_vector = np.mean(selected, axis=0)
+        cov_matrix = np.cov(selected, rowvar=False)
+        
+        # Handle singular covariance matrix by adding small diagonal perturbation
+        if np.linalg.matrix_rank(cov_matrix) < dim:
+            cov_matrix += np.eye(dim) * 1e-6
+        
+        # Generate new population from the estimated distribution
+        population = np.random.multivariate_normal(
+            mean=mean_vector, cov=cov_matrix, size=n
+        )
+        
+        # Clip to bounds
+        population = np.clip(population, lb, ub)
+    
+    # Final evaluation
+    final_fitness = eval_pop(population, obj_fun)
+    best_idx = np.argmin(final_fitness)
+    if final_fitness[best_idx] < best_fitness:
+        best_individual = population[best_idx].copy()
+        best_fitness = final_fitness[best_idx]
+        history.append(best_fitness)
+    
+    return make_result(best_individual, best_fitness, population, final_fitness, history)
