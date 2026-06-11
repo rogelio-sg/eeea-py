@@ -1,17 +1,31 @@
 import numpy as np
 
 def explicit_exploration(fitness_fun, dim, lb, ub, n, tol, K, maxiter):
-    """Returns a population of n individuals using explicit exploration.
+    """Function that implements Explicit Exploration Strategy.
 
-    Keyword arguments:
-    fitness_fun -- fitness function to explore
-    dim         -- dimension of the fitness function
-    lb          -- lower bound of the function
-    ub          -- upper bound of the function
-    n           -- number of individuals
-    tol         -- error tolerance
-    K           -- number of consecutive generations below tolerance
-    maxiter     -- maximum number of iterations
+    Parameters
+    ----------
+    fitness_fun : callable
+        Fitness function to explore.
+    dim : int
+        Dimension of the fitness function.
+    lb : numpy.ndarray
+        Lower bound of the function.
+    ub : numpy.ndarray
+        Upper bound of the function.
+    n : int
+        Number of individuals.
+    tol : float
+        Error tolerance.
+    K : int
+        Number of consecutive generations below tolerance.
+    maxiter : int
+        Maximum number of iterations.
+
+    Returns
+    -------
+    numpy.ndarray
+        Initial population of shape (n, dim).
     """
     # Generate initial random population P
     P0 = np.zeros((n, dim))
@@ -64,11 +78,4 @@ def explicit_exploration(fitness_fun, dim, lb, ub, n, tol, K, maxiter):
     S = P0[ind[:n]]
 
     return S
-if __name__ == "__main__":
-    import tests
-    lb = np.full(2, -5.12)
-    ub = np.full(2, 5.12)
 
-    S = explicit_exploration(fitness_fun=tests.sphere, dim=2, lb=lb, ub=ub, n=50, tol=0.01, K=30, maxiter=300)
-
-    print("Population:", S)
