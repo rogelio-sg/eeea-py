@@ -35,8 +35,7 @@ print(result['best_individual']) # array close to [0, 0, 0, 0, 0]
 
 ## Run GWO with Explicit Exploration initialization
 
-Using `method='ees'` replaces the standard random start with a statistically
-stable initial population (see [Explicit Exploration Strategy](../theory/explicit-exploration.md)).
+Using `method='ees'` replaces the standard random start with a statistically stable initial population (see [Explicit Exploration Strategy](../theory/explicit-exploration.md)).
 
 ```python
 from eeea_py.algorithms.gwo import gwo
@@ -60,8 +59,7 @@ print(result['best_fitness'])
 
 ## Inspect the convergence history
 
-Every result dictionary contains a `history` list with the best fitness value
-recorded after each generation.
+Every result dictionary contains a `history` list with the best fitness value recorded after each generation.
 
 ```python
 import matplotlib.pyplot as plt
