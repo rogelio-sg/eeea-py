@@ -28,9 +28,26 @@ def explicit_exploration(fitness_fun, dim, lb, ub, n, tol, K, maxiter):
         Initial population of shape (n, dim).
     """
     # Generate initial random population P
+    # Validate that the population size is valid
+    if n <= 0:
+        raise ValueError(f"Population size 'n' must be greater than 0. Received: {n}")
+
+    # Convert lb and ub to numpy arrays if they aren't already for validation
+    lb = np.asarray(lb)
+    ub = np.asarray(ub)
+
+    # Validate that the bounds dimensions match 'dim'
+    if len(lb) != dim or len(ub) != dim:
+        raise ValueError(f"The dimensions of the bounds (lb: {len(lb)}, ub: {len(ub)}) must match 'dim' ({dim}).")
+        
+    # Validate bounds logic (lb cannot be greater than ub)
+    if np.any(lb > ub):
+        raise ValueError("Lower bounds (lb) cannot be greater than upper bounds (ub).")
+
+    # Generate initial random population P
     P0 = np.zeros((n, dim))
     for i in range(dim):
-        P0[:, i] = np.random.uniform(low=lb[i], high=ub[i], size=n)
+        P0[:, i] = np.random.uniform(low=lb[i], high=ub[i], size=n) 
 
     # Evaluate population in the fitness function
     Y = np.apply_along_axis(fitness_fun, 1, P0)
