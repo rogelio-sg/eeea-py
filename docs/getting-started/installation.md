@@ -12,7 +12,14 @@ Clone the repository and install in editable mode:
 ```bash
 git clone https://github.com/rogelio-sg/eeea-py.git
 cd eeea-py
-pip install -e .
+pip install .
+```
+## Install from Pypi
+
+Clone the repository and install in editable mode:
+
+```bash
+pip install eeea-py
 ```
 
 ## Install dependencies

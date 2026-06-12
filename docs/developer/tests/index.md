@@ -4,7 +4,7 @@ This document outlines the architecture, philosophy, and execution guidelines fo
 
 ---
 
-## 1. Testing Philosophy
+## Testing Philosophy
 
 The testing strategy is built upon three core principles:
 
@@ -14,7 +14,7 @@ The testing strategy is built upon three core principles:
 
 ---
 
-## 2. Directory Structure
+## Directory Structure
 
 The `tests/` directory is modularized by the intent and scope of the tests:
 
@@ -29,9 +29,9 @@ tests/
 
 ---
 
-## 3. Test Categories
+## Test Categories
 
-### 3.1. Unit Tests (`tests/unit/`)
+### Unit Tests (`tests/unit/`)
 
 Unit tests focus on the smallest testable parts of the library, primarily the internal utilities located in `eeea_py.utils`.
 
@@ -40,14 +40,14 @@ Unit tests focus on the smallest testable parts of the library, primarily the in
 * **Results Management (`test_results_management.py`):** Verifies the formatting and standardization of the output dictionary returned by all algorithms.
 * **Explicit Exploration Strategy (`test_ee.py`):** Tests the internal behavior of the EES algorithm, including sorting validation for minimization problems.
 
-### 3.2. Integration Tests (`tests/integration/`)
+### Integration Tests (`tests/integration/`)
 
 Integration tests evaluate how different modules interact to perform a complete optimization workflow.
 
 * **Algorithm Integration (`test_pso_integration.py`, etc.):** Uses standard unimodal benchmarks (Sphere, Rosenbrock, Trid, Schwefel 1.2) to verify that algorithms execute from start to finish and return the expected dictionary structures.
 * **API Compliance (`test_all_algorithms_api.py`):** Dynamically discovers every metaheuristic function inside `eeea_py.algorithms`, inspects its signature, and executes a baseline test to guarantee it strictly adheres to the generic library interface.
 
-### 3.3. Robustness Tests (`tests/robustness/`)
+### Robustness Tests (`tests/robustness/`)
 
 These tests ensure the algorithms are mathematically reliable and scientifically reproducible.
 
@@ -55,19 +55,19 @@ These tests ensure the algorithms are mathematically reliable and scientifically
 * **Early Stopping:** Confirms that algorithms halt execution correctly when the tolerance (`tol`) and consecutive stable generations (`k`) conditions are met before `maxiter`.
 * **Minimization Logic:** Ensures the best reported individual mathematically matches the best reported fitness.
 
-### 3.4. Edge Cases (`tests/edge_cases/`)
+### Edge Cases (`tests/edge_cases/`)
 
 Designed to enforce robust exception handling.
 
 * **Exceptions (`test_exceptions.py`):** Asserts that the system raises explicit `ValueError` exceptions when users provide mismatched dimensions, inverted bounds, zero/negative population sizes, or unsupported initialization methods.
 
-### 3.5. Sanity Checks (`test_import.py`)
+### Sanity Checks (`test_import.py`)
 
 Validates that the top-level package exports the primary algorithms correctly and that all sub-modules can be imported dynamically without circular dependencies or syntax errors.
 
 ---
 
-## 4. Running the Tests
+## Running the Tests
 
 To execute the test suite, navigate to the root directory of the project and use `pytest`.
 
@@ -98,7 +98,7 @@ pytest --cov=eeea_py tests/
 
 ---
 
-## 5. Guidelines for Adding New Tests
+## Guidelines for Adding New Tests
 
 When contributing new features or algorithms to the library, adhere to the following standards:
 
