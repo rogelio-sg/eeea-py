@@ -7,6 +7,8 @@ authors = [
   { name="Victoria Galvan", email="galvand.victoria@gmail.com" },
   { name="Juan De Dios", email="halowolf213@gmail.com" },
   { name="Jessica Medina", email="jessvimm@gmail.com" },
+  { name="Carlos Lopez", email="carlos.lopezh@edu.uaa.mx" },
+  { name="Ilse Saldivar", email="al227455@edu.uaa.mx" }
 ]
 description = ""
 readme = "README.md"
@@ -34,3 +36,25 @@ testpaths = ["tests"]
 # Enables automatic discovery and inclusion of non-Python resource files 
 # located within the package subdirectories.
 include-package-data = true
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "mkdocs-material>=9.0.0",
+    "pymdown-extensions>=9.0.0",
+    "mypy>=1.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "isort>=5.0.0"
+]
+docs = [
+    "mkdocs-material>=9.0.0",
+    "pymdown-extensions>=9.0.0",
+    "mkdocs>=1.4.0"
+]
+science = [
+    "scikit-learn>=1.2.0",
+    "jupyter>=1.0.0",
+    "notebook>=6.5.0"
+]
