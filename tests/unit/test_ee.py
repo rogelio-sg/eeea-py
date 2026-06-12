@@ -4,19 +4,19 @@ from eeea_py.algorithms.EES import explicit_exploration
 
 # Importing the benchmark test functions from evobench
 from evobench.benchmarks.unimodal import (
-    rosenbrock_function,
-    sphere_function,
-    schwefel_1_2_function,
-    trid_function
+    rosenbrock_function as rosenbrock,
+    sphere_function as sphere,
+    schwefel_1_2_function as swefel,
+    trid_function as trid
 )
 # --- INTEGRATION TEST WITH BENCHMARKS AND BOUNDARIES ---
-@pytest.mark.parametrize("benchmark_function, lower_bound, upper_bound", [
-    (sphere_function, [-600.0,-600.0,-600.0], [600.0,-600.0,-600.0]),
-    (rosenbrock_function, [-10.0,-10.0,-10.0], [10.0,10.0,10.0]),
-    (schwefel_1_2_function,[-40.0,-40.0,-40.0], [60.0,60.0,60.0]),
-    (trid_function,[-100.0,-100.0,-100.0], [100.0,100.0,100.0])  # Generic boundaries for testing purposes
+@pytest.mark.parametrize("bench_func, lower_bound, upper_bound", [
+    (sphere, [-600.0,-600.0,-600.0], [600.0,-600.0,-600.0]),
+    (rosenbrock, [-10.0,-10.0,-10.0], [10.0,10.0,10.0]),
+    (swefel,[-40.0,-40.0,-40.0], [60.0,60.0,60.0]),
+    (trid,[-100.0,-100.0,-100.0], [100.0,100.0,100.0])  # Generic boundaries for testing purposes
 ])
-def test_explicit_exploration_shapes_and_bounds(benchmark_function, lower_bound, upper_bound):
+def test_exploration_shapes_and_bounds(bench_func, lower_bound, upper_bound):
     """
     Verifies that the algorithm returns the correct number of individuals,
     with the proper dimensionality, and strictly within the specified search boundaries.
@@ -33,7 +33,7 @@ def test_explicit_exploration_shapes_and_bounds(benchmark_function, lower_bound,
     # Execute the exploration function
     selected_population = explicit_exploration(
         n=population_size, 
-        fitness_fun=benchmark_function, 
+        fitness_fun=bench_func, 
         dim=dimensions, 
         lb=lower_bound, 
         ub=upper_bound, 
@@ -51,7 +51,7 @@ def test_explicit_exploration_shapes_and_bounds(benchmark_function, lower_bound,
     assert np.all(selected_population <= upper_bound), "Found values above the upper bound."
 
 # --- SORTING TEST: MINIMIZATION ---
-def test_explicit_exploration_mode_min():
+def test_minimization():
     """
     Verifies that when using mode='min', the returned individuals are
     sorted from lowest to highest fitness value (best fitness first).
@@ -63,7 +63,7 @@ def test_explicit_exploration_mode_min():
     # Using the Sphere function as it is fast and strictly convex
     selected_population = explicit_exploration(
         n=population_size, 
-        fitness_fun=sphere_function, 
+        fitness_fun=sphere, 
         dim=dimensions, 
         lb=[-10.0,-10.0], 
         ub=[10.0, 10.0], 
@@ -73,7 +73,7 @@ def test_explicit_exploration_mode_min():
     )
     
     # Evaluate the returned individuals
-    fitness_values = [sphere_function(individual) for individual in selected_population]
+    fitness_values = [sphere(individual) for individual in selected_population]
     
     # Check that the fitness array is sorted in ascending order
     for i in range(len(fitness_values) - 1):
