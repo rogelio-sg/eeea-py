@@ -134,6 +134,9 @@ eeea-py/
 │   │   ├── EMNA.py                  # Estimation of Multivariate Normal Algorithm
 │   │   ├── GWO.py                   # Grey Wolf Optimizer
 │   │   └── PSO.py                   # Particle Swarm Optimization
+│   ├── benchmarks/
+│   │   ├── unimodal.py              # Sphere, Rosenbrock, Schwefel 1.2, Trid
+│   │   └── multimodal.py            # Ackley
 │   ├── utils/
 │   │   ├── population_configuration.py
 │   │   ├── ranges_verification.py
@@ -153,19 +156,31 @@ eeea-py/
 ```
 
 ---
+
 ## Benchmark Functions
 
-All benchmark functions follow the signature `fn(x: np.ndarray) -> float`:
+All benchmark functions accept a `numpy.ndarray` and return a `float`. They can be imported as follows:
 
-| Function      | Type        | Global Minimum | Characteristics                        |
-|---------------|-------------|----------------|----------------------------------------|
-| `sphere`      | Unimodal    | 0 at origin    | Convex, separable baseline             |
-| `rosenbrock`  | Unimodal    | 0 at (1,…,1)  | Non-convex valley, slow convergence    |
-| `ackley`      | Multimodal  | 0 at origin    | Many local optima, shallow exterior    |
-| `rastrigin`   | Multimodal  | 0 at origin    | Highly multimodal, periodic landscape  |
-| `schwefel`    | Multimodal  | 0              | Deceptive: global optimum far from best local optima |
- 
+```python
+from eeea_py.benchmarks.unimodal import sphere_function, rosenbrock_function
+from eeea_py.benchmarks.multimodal import ackley_function
+
+# Or using the registry
+from eeea_py.benchmarks import get_benchmark
+
+sphere = get_benchmark("sphere")
+```
+
+| Function | Type | Search Space | Global Optimum |
+|---|---|---|---|
+| `sphere_function` | Unimodal | `[-600, 600]` | `F(0) = 0` |
+| `rosenbrock_function` | Unimodal | `[-10, 10]` | `F(1,...,1) = 0` |
+| `schwefel_1_2_function` | Unimodal | `[-40, 60]` | `F(0) = 0` |
+| `trid_function` | Unimodal | `[-d², d²]` | `F(x) = -d(d+4)(d-1)/6` |
+| `ackley_function` | Multimodal | `[-10, 10]` | `F(0) = 0` |
+
 ---
+
 
 ## Contributing
 
