@@ -1,4 +1,4 @@
-site_name: eeea-py
+site_name: EEEA-PY
 site_description: 
 site_author: Enrique Gómez, Jessica Medina, Juan de Dios Rivas, Victoria Galvan
 
@@ -36,8 +36,7 @@ nav:
   - Getting Started:
       - Installation & Setup: getting-started/installation.md
       - Examples Gallery: examples/index.md
-      - Scientific Theory: explicit-exploration.md
-      - Overview: theory/index.md
+      - Scientific Theory: theory/explicit-exploration.md
   - API Reference:
       - Overview: reference/api-overview.md
       - Algorithms:
@@ -48,6 +47,7 @@ nav:
   - Project Info:
       - Changelog: changelog/v0.1.0.md
       - Contributing: developer/CONTRIBUTING.md
+      - Contributing tests: developer/tests/index.md
       - Research FAQ: faq/research_faq.md
 markdown_extensions:
   - pymdownx.arithmatex:

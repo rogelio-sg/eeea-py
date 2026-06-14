@@ -1,9 +1,14 @@
 [project]
-name = "EEEA-PY"
+name = "eeea-py"
 version = "0.0.1"
 authors = [
-  { name="Rogelio Salinas", email="" },
+  { name="Rogelio Salinas", email="rogelio.salinas.gutierrez@gmail.com" },
   { name="Enrique Gomez", email="ing.enrique_gomez@outlook.com" },
+  { name="Victoria Galvan", email="galvand.victoria@gmail.com" },
+  { name="Juan De Dios", email="halowolf213@gmail.com" },
+  { name="Jessica Medina", email="jessvimm@gmail.com" },
+  { name="Carlos Lopez", email="carlos.lopezh@edu.uaa.mx" },
+  { name="Ilse Saldivar", email="al227455@edu.uaa.mx" }
 ]
 description = ""
 readme = "README.md"
@@ -12,9 +17,44 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
 ]
-license = ""
-license-files = ["LICEN[CS]E*"]
 
 [project.urls]
-Homepage = "https://github.com/rogelio-sg/Paquete-Python"
-Issues = ""
+Homepage = "https://github.com/rogelio-sg/eeea-py"
+
+
+[tool.setuptools.packages.find]
+# Designates the 'src' directory as the primary location for package source discovery.
+where = ["src"]
+
+[tool.pytest.ini_options]
+# Extends the Python search path to include the 'src' directory, enabling cleaner
+# absolute imports and facilitating proper module resolution during testing.
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.setuptools]
+# Enables automatic discovery and inclusion of non-Python resource files 
+# located within the package subdirectories.
+include-package-data = true
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "mkdocs-material>=9.0.0",
+    "pymdown-extensions>=9.0.0",
+    "mypy>=1.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "isort>=5.0.0"
+]
+docs = [
+    "mkdocs-material>=9.0.0",
+    "pymdown-extensions>=9.0.0",
+    "mkdocs>=1.4.0"
+]
+science = [
+    "scikit-learn>=1.2.0",
+    "jupyter>=1.0.0",
+    "notebook>=6.5.0"
+]
