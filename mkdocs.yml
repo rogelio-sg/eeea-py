@@ -48,7 +48,7 @@ nav:
       - Changelog: changelog/v0.1.0.md
       - Contributing: developer/CONTRIBUTING.md
       - Contributing tests: developer/tests/index.md
-      - Research FAQ: faq/research_faq.md
+      - Research FAQ: FAQ/citation.md
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
