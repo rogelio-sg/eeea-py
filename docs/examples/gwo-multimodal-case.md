@@ -7,7 +7,7 @@ This example demonstrates how the Grey Wolf Optimizer handles the Rastrigin func
 The Rastrigin function is defined as:
 
 
-$$ f(x) = 10·n + Σ [ x_i² − 10·cos(2π·x_i) ] $$
+$$ f(x) = 10 * n  + \sum (x_i^2 - 10* \cos(2\pi * x_i)) $$
 
 
 Its global minimum is 0 at the origin. The landscape contains roughly `(2 · ub / 0.5)^n` local minima, making it one of the most challenging standard benchmarks.
