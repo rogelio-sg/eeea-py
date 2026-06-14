@@ -31,6 +31,9 @@ where = ["src"]
 # absolute imports and facilitating proper module resolution during testing.
 pythonpath = ["src"]
 testpaths = ["tests"]
+markers = [
+    "stress: long-running scalability and limits tests that are skipped unless RUN_STRESS_TESTS=1 is set",
+]
 
 [tool.setuptools]
 # Enables automatic discovery and inclusion of non-Python resource files 
@@ -46,7 +49,8 @@ dev = [
     "mypy>=1.0.0",
     "black>=23.0.0",
     "flake8>=6.0.0",
-    "isort>=5.0.0"
+    "isort>=5.0.0",
+    "evobench-lib==1.0.0"
 ]
 docs = [
     "mkdocs-material>=9.0.0",
