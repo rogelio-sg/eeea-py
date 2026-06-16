@@ -7,7 +7,7 @@
 
 ## Overview
 
-**eeea-py** is a Python package that implements **Explicit Exploration strategies** combined with **Estimation of Distribution Algorithms (EDAs)** and other metaheuristics for continuous optimization. It is the Python port of the [`EEEA`](https://cran.r-project.org/web/packages/EEEA/index.html) package originally developed for R.
+**eeea-py** is a Python package that implements **Explicit Exploration strategies** with the **Estimation of Multivariate Normal Algorithm (EMNA)** and other metaheuristics for continuous optimization. It is the Python port of the [`EEEA`](https://cran.r-project.org/web/packages/EEEA/index.html) package originally developed for R.
 
 The library introduces an explicit exploration mechanism that systematically diversifies the population across the search space, addressing the premature convergence problems common in standard evolutionary approaches.
 
