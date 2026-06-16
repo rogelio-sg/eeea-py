@@ -1,6 +1,15 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "eeea-py"
-version = "0.0.1"
+version = "1.0.0"
+description = "Explicit Exploration strategies and evolutionary metaheuristics for continuous optimization."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "GPL-3.0-or-later"
+
 authors = [
   { name="Rogelio Salinas", email="rogelio.salinas.gutierrez@gmail.com" },
   { name="Enrique Gomez", email="ing.enrique_gomez@outlook.com" },
@@ -10,25 +19,46 @@ authors = [
   { name="Carlos Lopez", email="carlos.lopezh@edu.uaa.mx" },
   { name="Ilse Saldivar", email="al227455@edu.uaa.mx" }
 ]
-description = ""
-readme = "README.md"
-requires-python = ">=3.9"
+
+dependencies = [
+    "numpy>=1.26.4,<3"
+]
+
+keywords = [
+    "optimization",
+    "metaheuristics",
+    "evolutionary-algorithms",
+    "EDA",
+    "EMNA",
+    "PSO",
+    "GWO",
+    "explicit-exploration"
+]
+
 classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Mathematics",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
 ]
 
 [project.urls]
 Homepage = "https://github.com/rogelio-sg/eeea-py"
-
+Repository = "https://github.com/rogelio-sg/eeea-py"
+Documentation = "https://rogelio-sg.github.io/eeea-py/"
+Issues = "https://github.com/rogelio-sg/eeea-py/issues"
 
 [tool.setuptools.packages.find]
-# Designates the 'src' directory as the primary location for package source discovery.
 where = ["src"]
 
 [tool.pytest.ini_options]
-# Extends the Python search path to include the 'src' directory, enabling cleaner
-# absolute imports and facilitating proper module resolution during testing.
 pythonpath = ["src"]
 testpaths = ["tests"]
 markers = [
@@ -36,8 +66,6 @@ markers = [
 ]
 
 [tool.setuptools]
-# Enables automatic discovery and inclusion of non-Python resource files 
-# located within the package subdirectories.
 include-package-data = true
 
 [project.optional-dependencies]
@@ -50,7 +78,7 @@ dev = [
     "black>=23.0.0",
     "flake8>=6.0.0",
     "isort>=5.0.0",
-    "evobench-lib==1.0.0"
+    "evobench-lib>=1.0.0"
 ]
 docs = [
     "mkdocs-material>=9.0.0",
