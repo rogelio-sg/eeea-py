@@ -69,7 +69,7 @@ pip install -e .
 
 ### Requirements
 
-- Python 3.8+
+- Python 3.9+
 - NumPy >= 1.19.0
 - SciPy >= 1.5.0
 
@@ -298,5 +298,5 @@ For bug reports and feature requests, open an issue on [GitHub](https://github.c
 ---
 
 **Last Updated**: June 2026  
-**Version**: 0.1.0  
+**Version**: 1.0.0  
 **Authors**: Galvan Delgadillo V., Gómez Linares E. A., López Hernández C. A., Martínez Medina J. V., Rivas Hernández J. de D., Saldívar Olvera I. D., & Salinas Gutiérrez R. — [GitHub](https://github.com/rogelio-sg/eeea-py)

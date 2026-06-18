@@ -17,7 +17,8 @@ authors = [
   { name="Juan De Dios", email="halowolf213@gmail.com" },
   { name="Jessica Medina", email="jessvimm@gmail.com" },
   { name="Carlos Lopez", email="carlos.lopezh@edu.uaa.mx" },
-  { name="Ilse Saldivar", email="al227455@edu.uaa.mx" }
+  { name="Ilse Saldivar", email="al227455@edu.uaa.mx" },
+  { name="Abraham Montoya", email="pedro.montoya@edu.uaa.mx" }
 ]
 
 dependencies = [

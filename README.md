@@ -242,5 +242,5 @@ For bug reports and feature requests, open an issue on [GitHub](https://github.c
 
 ---
 
-**Version**: 0.0.1  
-**Authors**: Galvan Delgadillo V., Gómez Linares E. A., López Hernández C. A., Martínez Medina J. V., Rivas Hernández J. de D., Saldívar Olvera I. D., & Salinas Gutiérrez R. — [GitHub](https://github.com/rogelio-sg/eeea-py)
+**Version**: 1.0.0  
+**Authors**: Galvan Delgadillo V., Gómez Linares E. A., López Hernández C. A., Martínez Medina J. V., Montoya Calzada P. A., Rivas Hernández J. de D., Saldívar Olvera I. D., & Salinas Gutiérrez R — [GitHub](https://github.com/rogelio-sg/eeea-py)
