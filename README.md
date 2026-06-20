@@ -198,15 +198,13 @@ If you use eeea-py in your research, please cite:
 
 ```bibtex
 @software{rogelio2026eeeapy,
-  title  = {eeea-py: Explicit Exploration and Evolutionary Algorithms in Python},
-  author = {Galvan Delgadillo, Victoria and G\'omez Linares, Enrique Ana\'el and
-            L{\'\o}pez Hern\'andez, Carlos Alberto and Mart{\'\i}nez Medina, Jessica Victoria and
-            Rivas Hern\'andez, Juan de Dios and Sald\'ivar Olvera, Ilse Daniela and
-            Salinas Guti\'errez, Rogelio},
-  year   = {2026},
-  url    = {https://github.com/rogelio-sg/eeea-py},
-  note   = {Software library}
+  title ={eeea-py: Explicit Exploration and Evolutionary Algorithms in Python},
+  author = {Galvan Delgadillo, Victoria and G\'omez Linares, Enrique  Ana\'el and L{\'\o}pez Hern{\'\a}ndez, Carlos Alberto and Mart{\'\i}nez Medina, Jessica Victoria and Montoya Calzada, Pedro Abraham and Rivas Hern{\'\a}ndez, Juan de Dios and Sald\'ivar Olvera, Ilse Daniela and Salinas Guti\'errez, Rogelio},
+  year={2026},
+  url={[https://github.com/rogelio-sg/eeea-py](https://github.com/rogelio-sg/eeea-py)},
+  note={Software library}
 }
+
 ```
 
 The theoretical foundations of the explicit exploration strategy are described in the original R package:
