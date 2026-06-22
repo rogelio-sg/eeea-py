@@ -199,7 +199,7 @@ If you use eeea-py in your research, please cite:
 ```bibtex
 @software{rogelio2026eeeapy,
   title ={eeea-py: Explicit Exploration and Evolutionary Algorithms in Python},
-  author = {Galvan Delgadillo, Victoria and G\'omez Linares, Enrique  Ana\'el and L{\'\o}pez Hern{\'\a}ndez, Carlos Alberto and Mart{\'\i}nez Medina, Jessica Victoria and Montoya Calzada, Pedro Abraham and Rivas Hern{\'\a}ndez, Juan de Dios and Sald\'ivar Olvera, Ilse Daniela and Salinas Guti\'errez, Rogelio},
+  author = {Galvan Delgadillo, Victoria and G\'omez Linares, Enrique  Ana\'el and L{\'\o}pez Hern{\'\a}ndez, Carlos Alberto and Mart{\'\i}nez Medina, Jessica Victoria and Montoya Calzada, Pedro Abraham and Rivas Hern{\'\a}ndez, Juan de Dios and Saldivar Olvera, Ilse Daniela and Salinas Guti\'errez, Rogelio},
   year={2026},
   url={[https://github.com/rogelio-sg/eeea-py](https://github.com/rogelio-sg/eeea-py)},
   note={Software library}
@@ -243,4 +243,4 @@ For bug reports and feature requests, open an issue on [GitHub](https://github.c
 ---
 
 **Version**: 1.0.0  
-**Authors**: Galvan Delgadillo V., Gómez Linares E. A., López Hernández C. A., Martínez Medina J. V., Montoya Calzada P. A., Rivas Hernández J. de D., Saldívar Olvera I. D., & Salinas Gutiérrez R — [GitHub](https://github.com/rogelio-sg/eeea-py)
+**Authors**: Galvan Delgadillo V., Gómez Linares E. A., López Hernández C. A., Martínez Medina J. V., Montoya Calzada P. A., Rivas Hernández J. de D., Saldivar Olvera I. D., & Salinas Gutiérrez R — [GitHub](https://github.com/rogelio-sg/eeea-py)
