@@ -9,7 +9,7 @@ If you use eeea-py in your research, teaching, or industrial applications, we ki
 ```bibtex
 @software{rogelio2026eeeapy,
 title ={eeea-py: Explicit Exploration and Evolutionary Algorithms in Python},
-author = {Galvan Delgadillo, Victoria and G\'omez Linares, Enrique  Ana\'el and L{\'\o}pez Hern{\'\a}ndez, Carlos Alberto and Mart{\'\i}nez Medina, Jessica Victoria and Montoya Calzada, Pedro Abraham and Rivas Hern{\'\a}ndez, Juan de Dios and Sald\'ivar Olvera, Ilse Daniela and Salinas Guti\'errez, Rogelio},
+author = {Galvan Delgadillo, Victoria and G\'omez Linares, Enrique  Ana\'el and L{\'\o}pez Hern{\'\a}ndez, Carlos Alberto and Mart{\'\i}nez Medina, Jessica Victoria and Montoya Calzada, Pedro Abraham and Rivas Hern{\'\a}ndez, Juan de Dios and Saldivar Olvera, Ilse Daniela and Salinas Guti\'errez, Rogelio},
 year={2026},
   url={[https://github.com/rogelio-sg/eeea-py](https://github.com/rogelio-sg/eeea-py)},
   note={Software library}
@@ -18,11 +18,11 @@ year={2026},
 
 ## APA Style
 
-Galvan Delgadillo, V., Gómez Linares, E. A., López Hernández, C. A., Martínez Medina, J. V., Montoya Calzada, P. A., Rivas Hernández, J. de D., Saldívar Olvera, I. D., & Salinas Gutiérrez, R. (2026). eeea-py: Explicit exploration and evolutionary algorithms in Python [Software]. Retrieved from https://github.com/rogelio-sg/eeea-py
+Galvan Delgadillo, V., Gómez Linares, E. A., López Hernández, C. A., Martínez Medina, J. V., Montoya Calzada, P. A., Rivas Hernández, J. de D., Saldivar Olvera, I. D., & Salinas Gutiérrez, R. (2026). eeea-py: Explicit exploration and evolutionary algorithms in Python [Software]. Retrieved from https://github.com/rogelio-sg/eeea-py
 
 ## Chicago Style
 
-Galvan Delgadillo, Victoria, Enrique Anael Gómez Linares, Carlos Alberto López Hernández, Jessica Victoria Martínez Medina, Pedro Abraham Montoya Calzada, Juan de Dios Rivas Hernández, Ilse Daniela Saldívar Olvera, and Rogelio Salinas Gutiérrez. 2026. "eeea-py: Explicit Exploration and Evolutionary Algorithms in Python." Software. https://github.com/rogelio-sg/eeea-py
+Galvan Delgadillo, Victoria, Enrique Anael Gómez Linares, Carlos Alberto López Hernández, Jessica Victoria Martínez Medina, Pedro Abraham Montoya Calzada, Juan de Dios Rivas Hernández, Ilse Daniela Saldivar Olvera, and Rogelio Salinas Gutiérrez. 2026. "eeea-py: Explicit Exploration and Evolutionary Algorithms in Python." Software. https://github.com/rogelio-sg/eeea-py
 
 ## MLA Style
 
@@ -52,7 +52,7 @@ When describing your experimental methodology, cite eeea-py as follows:
 ```markdown
 ## References
 
-- Galvan Delgadillo, V., Gómez Linares, E. A., López Hernández, C. A., Martínez Medina, J. V., Montoya Calzada, P. A., Rivas Hernández, J. de D., Saldívar Olvera, I. D., & Salinas Gutiérrez, R. (2026).
+- Galvan Delgadillo, V., Gómez Linares, E. A., López Hernández, C. A., Martínez Medina, J. V., Montoya Calzada, P. A., Rivas Hernández, J. de D., Saldivar Olvera, I. D., & Salinas Gutiérrez, R. (2026).
 eeea-py: Explicit exploration and evolutionary algorithms in Python.
 Retrieved from [https://github.com/rogelio-sg/eeea-py](https://github.com/rogelio-sg/eeea-py)
 ```
