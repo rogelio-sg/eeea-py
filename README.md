@@ -210,12 +210,14 @@ If you use eeea-py in your research, please cite:
 The theoretical foundations of the explicit exploration strategy are described in the original R package:
 
 ```bibtex
-@Manual{EEEA_R,
-  title  = {EEEA: Explicit Exploration Strategy for Evolutionary Algorithms},
-  author = {Salinas-Gutiérrez, Rogelio},
-  note   = {R package},
-  url    = {https://CRAN.R-project.org/package=EEEA}
-}
+@Manual{,
+    title = {EEEA: Explicit Exploration Strategy for Evolutionary Algorithms},
+    author = {Rogelio {Salinas Gutiérrez} and Pedro Abraham {Montoya Calzada} and Angel Eduardo {Muñoz Zavala} and Alejandro Fausto {Cortés Salinas} and Ilse Daniela {Saldivar Olvera}},
+    year = {2025},
+    note = {R package version 1.0.1},
+    url = {https://CRAN.R-project.org/package=EEEA},
+    doi = {10.32614/CRAN.package.EEEA},
+  }
 ```
 
 ---
