@@ -25,4 +25,4 @@ result = gwo(
 
 # Display the optimization results
 print("Best fitness:", result["best_fitness"])
-print("Best solution:", result["best_individual"])
+print("Best individual:", result["best_individual"])
