@@ -23,7 +23,7 @@ Global minimum: `f(0,...,0) = 0`.
 DIM = 15
 LB  = [-32.768] * DIM
 UB  = [ 32.768] * DIM
-N   = 80
+N   = 150
 G   = 400
 SEED = 0
 
