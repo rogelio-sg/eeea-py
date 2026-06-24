@@ -60,9 +60,6 @@ def emna(obj_fun, dim, lb, ub, n, g, method='random',
     elif method != 'random':
         raise ValueError(f"Unknown method: {method}. Use 'random' or 'ees'")
     
-    if seed is not None:
-        np.random.seed(seed)
-    
     # Validate bounds
     lb, ub, _ = validate_bounds(lb, ub)
     
@@ -96,9 +93,8 @@ def emna(obj_fun, dim, lb, ub, n, g, method='random',
         mean_vector = np.mean(selected, axis=0)
         cov_matrix = np.cov(selected, rowvar=False)
         
-        # Handle singular covariance matrix by adding small diagonal perturbation
-        if np.linalg.matrix_rank(cov_matrix) < dim:
-            cov_matrix += np.eye(dim) * 1e-6
+        # Adding small diagonal perturbation to prevent singular covariance matrix
+        cov_matrix += np.eye(dim) * 1e-6
         
         # Generate new population from the estimated distribution
         population = np.random.multivariate_normal(
